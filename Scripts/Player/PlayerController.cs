@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public WeaponController weapon;
+
     private Rigidbody2D rb;
     private float moveImput;
     private bool isGrounded;
@@ -46,6 +48,14 @@ public class PlayerController : MonoBehaviour
 
         if(isGrounded){
             extraJumps = actualNumberOfJumps;
+        }
+
+        if(Input.GetMouseButtonDown(0)){
+            weapon.isShooting = true;
+        }
+
+        if(Input.GetMouseButtonUp(0)){
+            weapon.isShooting = false;
         }
 
         if(Input.GetKeyDown(KeyCode.W) && extraJumps >= 0){
