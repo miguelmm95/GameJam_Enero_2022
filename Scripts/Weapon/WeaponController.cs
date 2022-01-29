@@ -18,7 +18,16 @@ public class WeaponController : MonoBehaviour
 
     void Update(){
         if(isShooting){
-
+            shotCounter -= Time.deltaTime;
+            if(shotCounter <= 0)
+            {
+                shotCounter = timeBetweenShots;
+                BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                newBullet.speed = bulletSpeed;
+                newBullet.damage = bulletDamage;
+            }
+        }else{
+            shotCounter = 0;
         }
     }
 }
