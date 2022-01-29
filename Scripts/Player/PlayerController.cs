@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate(){
 
-        Debug.Log(isDashing);
-
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isJumpable);
 
         moveImput = Input.GetAxisRaw("Horizontal");
@@ -46,9 +44,6 @@ public class PlayerController : MonoBehaviour
 
         
         Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        Debug.Log("Coordenada x aim: " + aim.x);
-        Debug.Log("Coordenada x transform: " + transform.position.x);
 
         if(aim.x < transform.position.x){
             transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);      //Turn Left
