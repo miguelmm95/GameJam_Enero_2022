@@ -85,10 +85,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             isDashing = true;
+            animator.SetBool("isDashing", true);
 
             if(dashTime <= 0)
             {
                 isDashing = false;
+                animator.SetBool("isDashing", false);
                 direction = 0;
                 dashTime = startDashTime;
                 rb.velocity = Vector2.zero;
