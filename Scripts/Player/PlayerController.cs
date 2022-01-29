@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         moveImput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
 
+        
         Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if(aim.x < transform.position.x){
