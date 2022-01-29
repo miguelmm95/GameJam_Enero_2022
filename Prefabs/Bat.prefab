@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2777298855874367987}
   - component: {fileID: 8538068241640452163}
   - component: {fileID: 3668978533030377774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spritesheet_0 (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,9 +118,9 @@ GameObject:
   - component: {fileID: 4416033982462249757}
   - component: {fileID: 1590320495491310246}
   - component: {fileID: 2120114952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BatGFX
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -254,9 +254,10 @@ GameObject:
   - component: {fileID: 8461992440727563955}
   - component: {fileID: 1093132630684948751}
   - component: {fileID: 2828207312733396657}
-  m_Layer: 0
+  - component: {fileID: 4119612320317519348}
+  m_Layer: 8
   m_Name: Bat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,6 +364,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &4119612320317519348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935060234924925190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad45360c689b9944bf63d74b1f67bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &7856058811405110113
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,9 +388,9 @@ GameObject:
   - component: {fileID: 5862398796079411939}
   - component: {fileID: 6105351650286547727}
   - component: {fileID: 8257568629740280049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spritesheet_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
