@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveImput;
     private bool isGrounded;
-    private bool facingRight = true;
     private int extraJumps;
     private float jumpTimeCounter;
     private bool isJumping;
@@ -33,10 +32,12 @@ public class PlayerController : MonoBehaviour
         moveImput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
 
-        if(!facingRight && moveImput > 0){
-            Flip();
-        }else if(facingRight && moveImput < 0){
-            Flip();
+        Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(aim.x < transform.position.x){
+            transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+        }else{
+            transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
         }
     }
 
@@ -68,12 +69,5 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.W)){
             isJumping = false;
         }
-    }
-
-    void Flip(){
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
     }
 }
