@@ -8,16 +8,15 @@ public class BulletController : MonoBehaviour
     public int damage = 5;
     public float lifeTime;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(speed * Time.deltaTime, 0);
     }
 
     void Update(){
         lifeTime -= Time.deltaTime;
-
-        transform.position += transform.right * Time.deltaTime * speed;
 
         if(lifeTime <= 0){
             Destroy(gameObject);
@@ -30,10 +29,16 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 6)
+        if(collision.gameObject.tag == "Ground")
         {
             Destroy(gameObject);
-            Debug.Log("IM HERE");
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("HOLA MUNDO");
+            collision.gameObject.GetComponent<EnemyController>().getDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

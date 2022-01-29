@@ -97,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -128,7 +128,6 @@ MonoBehaviour:
   speed: 45
   damage: 5
   lifeTime: 0.3
-  rb: {fileID: 924545839248928456}
 --- !u!50 &924545839248928456
 Rigidbody2D:
   serializedVersion: 4
@@ -148,5 +147,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 6
