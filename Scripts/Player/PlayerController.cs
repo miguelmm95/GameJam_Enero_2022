@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private int extraJumps;
     private float jumpTimeCounter;
     private bool isJumping;
+    private bool isDashing;
+
     public float speed;
     public float jumpForce;
     public Transform feetPos;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask isJumpable;
     public int actualNumberOfJumps;
     public float jumpTime;
+    public float dashDistance = 10f;
 
 
 
@@ -33,15 +36,22 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isJumpable);
 
         moveImput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
+        if(!isDashing)
+            rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
 
         
         Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if(aim.x < transform.position.x){
-            transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+            transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);      //Turn Left
         }else{
-            transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+            transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);        //Turn Right
+        }
+
+        if(aim.x < transform.position.x && Input.GetKeyDown(KeyCode.Mouse1)){         //Dash Left
+            StartCoroutine(Dash(-1f));
+        }else if(aim.x > transform.position.x && Input.GetKeyDown(KeyCode.Mouse1)){   //Dash Right
+            StartCoroutine(Dash(1f));
         }
     }
 
@@ -81,5 +91,17 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.W)){
             isJumping = false;
         }
+    }
+
+    IEnumerator Dash (float direction)
+    {
+        isDashing = true;
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
+        float gravity = rb.gravityScale;
+        rb.gravityScale = 0;
+        yield return new WaitForSeconds(0.3f);
+        isDashing = false;
+        rb.gravityScale = gravity;
     }
 }
