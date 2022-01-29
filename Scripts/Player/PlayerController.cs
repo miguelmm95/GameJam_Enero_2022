@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isDashing;
+    private bool playerLookingRight;
 
     public float speed;
     public float jumpForce;
@@ -33,24 +34,37 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate(){
 
+        Debug.Log(isDashing);
+
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isJumpable);
 
         moveImput = Input.GetAxisRaw("Horizontal");
-        if(!isDashing)
+        if (!isDashing)
+        {
             rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
+        }
 
         
         Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        Debug.Log("Coordenada x aim: " + aim.x);
+        Debug.Log("Coordenada x transform: " + transform.position.x);
+
         if(aim.x < transform.position.x){
             transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);      //Turn Left
-        }else{
+            playerLookingRight = false;
+        }
+        else{
             transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);        //Turn Right
+            playerLookingRight = true;
         }
 
-        if(aim.x < transform.position.x && Input.GetKeyDown(KeyCode.Mouse1)){         //Dash Left
+        if(!playerLookingRight && Input.GetKeyDown(KeyCode.Mouse1))
+        {
             StartCoroutine(Dash(-1f));
-        }else if(aim.x > transform.position.x && Input.GetKeyDown(KeyCode.Mouse1)){   //Dash Right
+
+        }else if(playerLookingRight && Input.GetKeyDown(KeyCode.Mouse1))
+        {
             StartCoroutine(Dash(1f));
         }
     }
@@ -100,7 +114,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
         float gravity = rb.gravityScale;
         rb.gravityScale = 0;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         isDashing = false;
         rb.gravityScale = gravity;
     }
