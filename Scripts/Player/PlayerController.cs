@@ -23,7 +23,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask isJumpable;
     public int actualNumberOfJumps;
     public float jumpTime;
-    public float dashDistance = 10f;
+
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    private int direction;
 
 
 
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
         extraJumps = actualNumberOfJumps;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        dashTime = startDashTime;
     }
 
     void FixedUpdate(){
@@ -56,23 +61,61 @@ public class PlayerController : MonoBehaviour
         
         Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(aim.x < transform.position.x){
-            transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);      //Turn Left
-            playerLookingRight = false;
-        }
-        else{
-            transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);        //Turn Right
-            playerLookingRight = true;
+        if (!isDashing)
+        {
+            if (aim.x < transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);      //Turn Left
+                playerLookingRight = false;
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);        //Turn Right
+                playerLookingRight = true;
+            }
         }
 
-        if(!playerLookingRight && Input.GetKeyDown(KeyCode.Mouse1))
+        if(direction == 0)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                direction = 1;
+            }
+        }
+        else
+        {
+            isDashing = true;
+
+            if(dashTime <= 0)
+            {
+                isDashing = false;
+                direction = 0;
+                dashTime = startDashTime;
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                dashTime -= Time.deltaTime;
+
+                if(direction == 1 && !playerLookingRight)
+                {
+                    rb.velocity = Vector2.left * dashSpeed;
+                } else
+                {
+                    rb.velocity = Vector2.right * dashSpeed;
+                }
+            }
+        }
+
+
+        /*if(!playerLookingRight && Input.GetKeyDown(KeyCode.Mouse1))
         {
             StartCoroutine(Dash(-1f));
 
         }else if(playerLookingRight && Input.GetKeyDown(KeyCode.Mouse1))
         {
             StartCoroutine(Dash(1f));
-        }
+        }*/
     }
 
     void Update(){
@@ -113,7 +156,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Dash (float direction)
+    /*IEnumerator Dash (float direction)
     {
         isDashing = true;
         rb.velocity = new Vector2(rb.velocity.x, 0f);
@@ -123,5 +166,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         isDashing = false;
         rb.gravityScale = gravity;
-    }
+    }*/
 }

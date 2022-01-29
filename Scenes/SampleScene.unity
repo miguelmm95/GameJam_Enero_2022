@@ -380,7 +380,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 303452083}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36e3b2dc8d469844c86fc9d4700b14fc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -457,8 +457,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303452083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 13, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3.05, z: 0}
+  m_LocalScale: {x: 35.75, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -736,24 +736,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 286658923, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065906070, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: bulletSpeed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 712432661121804996, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 712432661121804996, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 712432661121804996, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 712432661121805115, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
@@ -799,18 +783,6 @@ PrefabInstance:
     - target: {fileID: 712432661121805115, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 712432661390044922, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3742422190978141774, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259287797027630023, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
