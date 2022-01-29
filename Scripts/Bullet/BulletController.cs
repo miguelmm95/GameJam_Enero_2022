@@ -23,6 +23,6 @@ public class BulletController : MonoBehaviour
     }
 
     void FixedUpdate(){
-        rb.AddForce(transform.forward * speed);
+        transform.Translate(speed * Time.deltaTime, 0, 0);
     }
 }

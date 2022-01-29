@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public WeaponController weapon;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private float moveImput;
