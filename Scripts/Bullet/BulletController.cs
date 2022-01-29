@@ -36,7 +36,6 @@ public class BulletController : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("HOLA MUNDO");
             collision.gameObject.GetComponent<EnemyController>().getDamage(damage);
             Destroy(gameObject);
         }

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start(){
         extraJumps = actualNumberOfJumps;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate(){
@@ -37,6 +38,16 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isJumpable);
 
         moveImput = Input.GetAxisRaw("Horizontal");
+
+        if(moveImput == 0)
+        {
+            animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isRunning", true);
+        }
+
         if (!isDashing)
         {
             rb.velocity = new Vector2(moveImput * speed, rb.velocity.y);
