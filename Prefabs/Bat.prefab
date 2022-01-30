@@ -360,7 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad45360c689b9944bf63d74b1f67bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sc: {fileID: 0}
+  deadSound: {fileID: 0}
   health: 10
+  imDead: 0
 --- !u!58 &3027871309105844862
 CircleCollider2D:
   m_ObjectHideFlags: 0

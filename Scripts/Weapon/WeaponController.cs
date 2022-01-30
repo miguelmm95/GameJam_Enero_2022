@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-
+    public AudioSource gunSound;
     public bool isShooting;
 
     public BulletController bullet;
@@ -21,6 +21,7 @@ public class WeaponController : MonoBehaviour
             shotCounter -= Time.deltaTime;
             if(shotCounter <= 0)
             {
+                gunSound.Play();
                 shotCounter = timeBetweenShots;
                 Instantiate(bullet, firePoint.position, firePoint.rotation);
             }
