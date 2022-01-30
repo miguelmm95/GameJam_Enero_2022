@@ -167,7 +167,7 @@ MonoBehaviour:
   actualNumberOfJumps: 0
   jumpTime: 0.35
   dashSpeed: 20
-  startDashTime: 0.4
+  startDashTime: 0.6
 --- !u!95 &344843012
 Animator:
   serializedVersion: 4
