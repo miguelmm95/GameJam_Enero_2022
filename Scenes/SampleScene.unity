@@ -740,10 +740,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 712432661121805113, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
-      propertyPath: startDashTime
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 712432661121805115, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -843,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 1886706666281199354, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6865316773794632815, guid: 7d305e6ac2dfafb469e29c890c36b912, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.14861915
