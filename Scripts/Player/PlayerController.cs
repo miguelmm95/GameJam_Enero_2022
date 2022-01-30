@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.W) && extraJumps >= 0){
             isJumping = true;
+            animator.SetBool("isJumpingUp", true);
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
@@ -155,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.W)){
             isJumping = false;
+            animator.SetBool("isJumpingUp", false);
         }
     }
 
