@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
         if(isGrounded){
             extraJumps = actualNumberOfJumps;
+            animator.SetBool("isFalling", false);
         }
 
         if(Input.GetMouseButtonDown(0)){
@@ -150,6 +151,8 @@ public class PlayerController : MonoBehaviour
                 jumpTimeCounter -= Time.deltaTime;
             }else{
                 isJumping = false;
+                animator.SetBool("isJumpingUp", false);
+                animator.SetBool("isFalling", true);
             }
             
         }
@@ -157,6 +160,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.W)){
             isJumping = false;
             animator.SetBool("isJumpingUp", false);
+            animator.SetBool("isFalling", true);
         }
     }
 
